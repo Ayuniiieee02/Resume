@@ -5,8 +5,8 @@ import os
 
 def create_supabase_client():
     # Replace with your actual Supabase URL and API Key
-    SUPABASE_URL = "https://your-supabase-url.supabase.co"
-    SUPABASE_KEY = "your-supabase-key"
+    SUPABASE_URL = "https://zccnwnfslnafqkwfynjg.supabase.co"
+    SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpjY253bmZzbG5hZnFrd2Z5bmpnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzUyMTc3NDEsImV4cCI6MjA1MDc5Mzc0MX0.NuDDOv7NabiRQywA58klp17As7FM-n4hZzNPW8vJb2Y"
     return create_client(SUPABASE_URL, SUPABASE_KEY)
 
 def fetch_applications(user_email):
