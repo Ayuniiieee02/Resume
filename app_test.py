@@ -3,21 +3,15 @@ import sys
 import os
 from supabase import create_client
 import Check
-from Home_test import home
+from home_test import home
 
 # Add the project root directory to the Python path
 project_root = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, project_root)
 
-# Initialize Supabase client
-def init_supabase():
-    supabase_url = st.secrets["SUPABASE_URL"]
-    supabase_key = st.secrets["SUPABASE_KEY"]
-    return create_client(supabase_url, supabase_key)
-
 # Add some error handling for imports
 try:
-    from Home_test import home
+    from home_test import home
     from pages.login_test import login
     from pages.sign_test import signup  # type: ignore 
     from upload import upload  # type: ignore
@@ -30,6 +24,15 @@ try:
 except ImportError as e:
     st.error(f"Import error: {e}")
     st.stop()
+
+def init_supabase():
+    try:
+        supabase_url = st.secrets["SUPABASE_URL"]
+        supabase_key = st.secrets["SUPABASE_KEY"]
+        return create_client(supabase_url, supabase_key)
+    except Exception as e:
+        st.error(f"Failed to initialize Supabase client: {e}")
+        st.stop()
 
 def create_header():
     if st.session_state.get("logged_in", False):
